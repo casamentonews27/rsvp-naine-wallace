@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP — Naíne & Wallace</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f5f0e8;--ivory:#faf7f2;
+  --gold:#b8965a;--gold-dark:#8a6e3a;
+  --sage:#7a8c72;--sage-dark:#4f6045;
+  --text:#4a4a42;--text-light:#8a8a7a;
+}
+body{background:var(--cream);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;padding:2rem 1rem}
+.card{background:var(--ivory);max-width:480px;width:100%;position:relative;border:1px solid #ddd5c4;box-shadow:0 6px 40px rgba(90,70,30,.10);overflow:hidden;padding-bottom:3rem;animation:up .7s ease both}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* corners */
+.corner{position:absolute;width:170px;height:170px;pointer-events:none;z-index:2}
+.corner-tl{top:0;left:0}
+.corner-tr{top:0;right:0;transform:scaleX(-1)}
+.corner-bl{bottom:0;left:0;transform:scaleY(-1)}
+.corner-br{bottom:0;right:0;transform:scale(-1,-1)}
+
+/* header */
+.header{text-align:center;padding:2.5rem 2rem 1.2rem;position:relative;z-index:1}
+.save-label{font-size:9.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem}
+.names{font-family:'Great Vibes',cursive;font-size:4.2rem;line-height:1.05;color:var(--sage-dark)}
+.amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--gold);display:block;margin:0}
+.tagline{font-size:9.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--text-light);margin-top:.9rem}
+.date-row{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:.5rem;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-light)}
+.date-row .gem{color:var(--gold);font-size:.45rem}
+
+/* divider */
+.div-wrap{display:flex;align-items:center;gap:10px;padding:0 3rem;margin:1.4rem 0}
+.div-line{flex:1;height:1px;background:#d5cbbа;background:#d5ccba}
+.div-icon{color:var(--sage);line-height:1}
+
+/* form */
+.fbody{padding:0 2.5rem;text-align:center;position:relative;z-index:1}
+.fq{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--text);margin-bottom:1.4rem}
+.flabel{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light);display:block;margin-bottom:.4rem}
+input[type=text]{width:100%;border:none;border-bottom:1px solid #cfc6b4;background:transparent;padding:.5rem 0;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text);text-align:center;outline:none;transition:border-color .3s;margin-bottom:1.8rem}
+input[type=text]::placeholder{color:#c5bba8;font-style:italic}
+input[type=text]:focus{border-bottom-color:var(--gold)}
+.bgroup{display:flex;gap:.75rem;justify-content:center;margin-bottom:2rem}
+.btn{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:.8rem 1.8rem;border:1px solid #cfc6b4;background:transparent;color:var(--text-light);cursor:pointer;transition:all .25s;border-radius:1px}
+.btn:hover{border-color:var(--sage);color:var(--sage);background:#f0ede5}
+.btn.sy{background:var(--sage);color:white;border-color:var(--sage)}
+.btn.sn{background:#a09080;color:white;border-color:#a09080}
+.sbtn{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.25em;text-transform:uppercase;padding:.9rem 2.8rem;background:var(--gold);color:white;border:none;border-radius:1px;cursor:pointer;transition:opacity .3s,transform .3s,background .2s;opacity:0;pointer-events:none;transform:translateY(5px)}
+.sbtn.vis{opacity:1;pointer-events:all;transform:translateY(0)}
+.sbtn:hover{background:var(--gold-dark)}
+
+/* ty */
+.ty{display:none;text-align:center;padding:0 2.5rem;position:relative;z-index:1}
+.ty.show{display:block;animation:up .6s ease}
+.ty-title{font-family:'Great Vibes',cursive;font-size:3rem;color:var(--sage-dark);margin-bottom:.7rem}
+.ty-msg{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-light);line-height:1.9;font-style:italic}
+</style>
+</head>
+<body>
+<div class="card">
+
+<!-- Top-left floral corner -->
+<svg class="corner corner-tl" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
+  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
+  <path d="M15 170 Q55 130 88 100" stroke="#a0b090" stroke-width="1" fill="none" opacity=".5"/>
+  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
+  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
+  <ellipse cx="22" cy="128" rx="9" ry="4" fill="#b0c0a0" opacity=".45" transform="rotate(-18 22 128)"/>
+  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
+  <!-- Big peony -->
+  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="96" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 96 52)"/>
+  <ellipse cx="118" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 118 52)"/>
+  <ellipse cx="96" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 96 74)"/>
+  <ellipse cx="118" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 118 74)"/>
+  <circle cx="107" cy="63" r="13" fill="#ede5d8" opacity=".7"/>
+  <circle cx="107" cy="63" r="9" fill="#e5dccb"/>
+  <circle cx="107" cy="63" r="5" fill="#d8c9a8"/>
+  <circle cx="107" cy="63" r="2.5" fill="#c9b488"/>
+  <!-- Small peony -->
+  <circle cx="58" cy="82" r="10" fill="#f0ebe0" opacity=".88"/>
+  <circle cx="58" cy="82" r="7" fill="#e8dece"/>
+  <circle cx="58" cy="82" r="4" fill="#d8c9a8"/>
+  <circle cx="58" cy="82" r="2" fill="#c9b488"/>
+  <ellipse cx="58" cy="73" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
+  <ellipse cx="58" cy="91" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
+  <ellipse cx="49" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
+  <ellipse cx="67" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
+  <!-- Daisy -->
+  <circle cx="28" cy="138" r="3.5" fill="#e8c860" opacity=".85"/>
+  <ellipse cx="28" cy="129" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
+  <ellipse cx="28" cy="147" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
+  <ellipse cx="19" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
+  <ellipse cx="37" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
+  <ellipse cx="21" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 21 131)"/>
+  <ellipse cx="35" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 35 131)"/>
+  <ellipse cx="21" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 21 145)"/>
+  <ellipse cx="35" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 35 145)"/>
+</svg>
+
+<svg class="corner corner-tr" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
+  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
+  <path d="M15 170 Q55 130 88 100" stroke="#a0b090" stroke-width="1" fill="none" opacity=".5"/>
+  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
+  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
+  <ellipse cx="22" cy="128" rx="9" ry="4" fill="#b0c0a0" opacity=".45" transform="rotate(-18 22 128)"/>
+  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
+  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="96" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 96 52)"/>
+  <ellipse cx="118" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 118 52)"/>
+  <ellipse cx="96" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 96 74)"/>
+  <ellipse cx="118" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 118 74)"/>
+  <circle cx="107" cy="63" r="13" fill="#ede5d8" opacity=".7"/>
+  <circle cx="107" cy="63" r="9" fill="#e5dccb"/>
+  <circle cx="107" cy="63" r="5" fill="#d8c9a8"/>
+  <circle cx="107" cy="63" r="2.5" fill="#c9b488"/>
+  <circle cx="58" cy="82" r="10" fill="#f0ebe0" opacity=".88"/>
+  <circle cx="58" cy="82" r="7" fill="#e8dece"/>
+  <circle cx="58" cy="82" r="4" fill="#d8c9a8"/>
+  <circle cx="58" cy="82" r="2" fill="#c9b488"/>
+  <ellipse cx="58" cy="73" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
+  <ellipse cx="58" cy="91" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
+  <ellipse cx="49" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
+  <ellipse cx="67" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
+  <circle cx="28" cy="138" r="3.5" fill="#e8c860" opacity=".85"/>
+  <ellipse cx="28" cy="129" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
+  <ellipse cx="28" cy="147" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
+  <ellipse cx="19" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
+  <ellipse cx="37" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
+  <ellipse cx="21" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 21 131)"/>
+  <ellipse cx="35" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 35 131)"/>
+  <ellipse cx="21" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 21 145)"/>
+  <ellipse cx="35" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 35 145)"/>
+</svg>
+
+<svg class="corner corner-bl" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
+  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
+  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
+  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
+  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
+  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <circle cx="107" cy="63" r="12" fill="#ede5d8" opacity=".7"/>
+  <circle cx="107" cy="63" r="8" fill="#e5dccb"/>
+  <circle cx="107" cy="63" r="4.5" fill="#d8c9a8"/>
+  <circle cx="107" cy="63" r="2" fill="#c9b488"/>
+  <circle cx="55" cy="80" r="8" fill="#f0ebe0" opacity=".85"/>
+  <circle cx="55" cy="80" r="5" fill="#e8dece"/>
+  <circle cx="55" cy="80" r="2.5" fill="#d4c090"/>
+  <ellipse cx="55" cy="72" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
+  <ellipse cx="55" cy="88" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
+  <ellipse cx="47" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
+  <ellipse cx="63" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
+</svg>
+
+<svg class="corner corner-br" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
+  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
+  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
+  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
+  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
+  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
+  <circle cx="107" cy="63" r="12" fill="#ede5d8" opacity=".7"/>
+  <circle cx="107" cy="63" r="8" fill="#e5dccb"/>
+  <circle cx="107" cy="63" r="4.5" fill="#d8c9a8"/>
+  <circle cx="107" cy="63" r="2" fill="#c9b488"/>
+  <circle cx="55" cy="80" r="8" fill="#f0ebe0" opacity=".85"/>
+  <circle cx="55" cy="80" r="5" fill="#e8dece"/>
+  <circle cx="55" cy="80" r="2.5" fill="#d4c090"/>
+  <ellipse cx="55" cy="72" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
+  <ellipse cx="55" cy="88" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
+  <ellipse cx="47" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
+  <ellipse cx="63" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
+</svg>
+
+<!-- Header -->
+<div class="header">
+  <p class="save-label">Confirmação de presença</p>
+  <div class="names">
+    Naíne<span class="amp">&</span>Wallace
+  </div>
+  <p class="tagline">Nós vamos casar!</p>
+  <div class="date-row">
+    <span>11.03.2027</span>
+    <span class="gem">◆</span>
+    <span>Rio de Janeiro</span>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="div-wrap">
+  <div class="div-line"></div>
+  <svg class="div-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 1 Q13 5 13 10 Q13 15 8 15 Q3 15 3 10 Q3 5 8 1Z" fill="#9aaa8a" opacity=".65"/>
+    <path d="M8 1 Q8 8 8 15" stroke="#7a8c72" stroke-width=".8" fill="none"/>
+  </svg>
+  <div class="div-line"></div>
+</div>
+
+<!-- Form -->
+<div class="fbody" id="formSection">
+  <p class="fq">Como podemos chamar você?</p>
+  <label class="flabel" for="guestName">Seu nome completo</label>
+  <input type="text" id="guestName" placeholder="Digite seu nome" autocomplete="off" oninput="checkForm()">
+
+  <p class="fq">Você poderá estar presente?</p>
+  <div class="bgroup">
+    <button class="btn" id="btnYes" onclick="sel('yes')">Sim, estarei lá</button>
+    <button class="btn" id="btnNo"  onclick="sel('no')">Não poderei ir</button>
+  </div>
+  <button class="sbtn" id="submitBtn" onclick="go()">Confirmar presença</button>
+</div>
+
+<!-- Thank you -->
+<div class="ty" id="ty">
+  <div style="margin-bottom:1rem">
+    <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+      <ellipse cx="26" cy="16" rx="6" ry="9" fill="#f4efe4" opacity=".85"/>
+      <ellipse cx="26" cy="36" rx="6" ry="9" fill="#f4efe4" opacity=".85"/>
+      <ellipse cx="16" cy="26" rx="9" ry="6" fill="#f4efe4" opacity=".85"/>
+      <ellipse cx="36" cy="26" rx="9" ry="6" fill="#f4efe4" opacity=".85"/>
+      <circle cx="26" cy="26" r="11" fill="#ede5d8" opacity=".75"/>
+      <circle cx="26" cy="26" r="7" fill="#e5dccb"/>
+      <circle cx="26" cy="26" r="4" fill="#d8c9a8"/>
+      <path d="M17 27 L23 33 L35 20" stroke="#7a8c72" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <p class="ty-title" id="tyTitle"></p>
+  <p class="ty-msg" id="tyMsg"></p>
+</div>
+
+</div>
+
+<script>
+let ans=null;
+function sel(v){
+  ans=v;
+  document.getElementById('btnYes').className='btn'+(v==='yes'?' sy':'');
+  document.getElementById('btnNo').className='btn'+(v==='no'?' sn':'');
+  checkForm();
+}
+function checkForm(){
+  const ok=document.getElementById('guestName').value.trim()&&ans;
+  document.getElementById('submitBtn').classList.toggle('vis',!!ok);
+}
+async function go(){
+  const name=document.getElementById('guestName').value.trim();
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Enviando…';btn.style.opacity='.6';btn.style.pointerEvents='none';
+  try{
+    const r=await fetch('https://formspree.io/f/mojywzba',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({nome:name,presenca:ans==='yes'?'Confirmado ✓':'Não poderá ir'})
+    });
+    if(!r.ok)throw 0;
+  }catch{
+    btn.textContent='Confirmar presença';btn.style.opacity='';btn.style.pointerEvents='';
+    alert('Ocorreu um erro. Tente novamente.');return;
+  }
+  document.getElementById('formSection').style.display='none';
+  const ty=document.getElementById('ty');ty.classList.add('show');
+  const first=name.split(' ')[0];
+  if(ans==='yes'){
+    document.getElementById('tyTitle').textContent='Até lá, '+first+'!';
+    document.getElementById('tyMsg').innerHTML='Que alegria ter você neste dia tão especial.<br>Sua presença tornará este momento ainda mais bonito.<br><br>Com amor, <em>Naíne & Wallace</em>';
+  }else{
+    document.getElementById('tyTitle').textContent='Obrigado, '+first+'.';
+    document.getElementById('tyMsg').innerHTML='Sentiremos muito a sua falta.<br>Mas saiba que você estará em nossos corações neste dia especial.<br><br>Com carinho, <em>Naíne & Wallace</em>';
+  }
+}
+</script>
+</body>
+</html>
