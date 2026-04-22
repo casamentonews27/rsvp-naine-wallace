@@ -8,17 +8,25 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#f5f0e8;--ivory:#faf7f2;
-  --gold:#b8965a;--gold-dark:#8a6e3a;
-  --sage:#7a8c72;--sage-dark:#4f6045;
-  --text:#4a4a42;--text-light:#8a8a7a;
+  --bg:#f7f4ee;
+  --ivory:#fdfaf4;
+  --blue:#7bafd4;
+  --blue-dark:#4a82aa;
+  --blue-light:#d6e8f5;
+  --yellow:#e8c45a;
+  --yellow-dark:#b8922a;
+  --yellow-light:#faf0cc;
+  --sage:#6b8c5e;
+  --sage-light:#a8bf9a;
+  --text:#3a3a2e;
+  --text-light:#7a7a62;
 }
-body{background:var(--cream);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;padding:2rem 1rem}
-.card{background:var(--ivory);max-width:480px;width:100%;position:relative;border:1px solid #ddd5c4;box-shadow:0 6px 40px rgba(90,70,30,.10);overflow:hidden;padding-bottom:3rem;animation:up .7s ease both}
+body{background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;padding:2rem 1rem}
+.card{background:var(--ivory);max-width:480px;width:100%;position:relative;border:1px solid #ddd8c8;box-shadow:0 6px 40px rgba(70,100,130,.10);overflow:hidden;padding-bottom:3rem;animation:up .7s ease both}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 /* corners */
-.corner{position:absolute;width:170px;height:170px;pointer-events:none;z-index:2}
+.corner{position:absolute;width:190px;height:190px;pointer-events:none;z-index:2}
 .corner-tl{top:0;left:0}
 .corner-tr{top:0;right:0;transform:scaleX(-1)}
 .corner-bl{bottom:0;left:0;transform:scaleY(-1)}
@@ -26,181 +34,222 @@ body{background:var(--cream);min-height:100vh;display:flex;align-items:center;ju
 
 /* header */
 .header{text-align:center;padding:2.5rem 2rem 1.2rem;position:relative;z-index:1}
-.save-label{font-size:9.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem}
-.names{font-family:'Great Vibes',cursive;font-size:4.2rem;line-height:1.05;color:var(--sage-dark)}
-.amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--gold);display:block;margin:0}
-.tagline{font-size:9.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--text-light);margin-top:.9rem}
+.save-label{font-size:9.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:.5rem}
+.names{font-family:'Great Vibes',cursive;font-size:4rem;line-height:1.05;color:var(--blue-dark)}
+.amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--yellow-dark);display:block;margin:0}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--blue);margin-top:.7rem}
 .date-row{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:.5rem;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-light)}
-.date-row .gem{color:var(--gold);font-size:.45rem}
+.date-row .gem{color:var(--yellow);font-size:.45rem}
 
 /* divider */
 .div-wrap{display:flex;align-items:center;gap:10px;padding:0 3rem;margin:1.4rem 0}
-.div-line{flex:1;height:1px;background:#d5cbbа;background:#d5ccba}
-.div-icon{color:var(--sage);line-height:1}
+.div-line{flex:1;height:1px;background:#d5d0c0}
 
 /* form */
 .fbody{padding:0 2.5rem;text-align:center;position:relative;z-index:1}
-.fq{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--text);margin-bottom:1.4rem}
+.fq{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--text);margin-bottom:1.3rem}
 .flabel{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light);display:block;margin-bottom:.4rem}
-input[type=text]{width:100%;border:none;border-bottom:1px solid #cfc6b4;background:transparent;padding:.5rem 0;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text);text-align:center;outline:none;transition:border-color .3s;margin-bottom:1.8rem}
-input[type=text]::placeholder{color:#c5bba8;font-style:italic}
-input[type=text]:focus{border-bottom-color:var(--gold)}
+input[type=text],input[type=number]{width:100%;border:none;border-bottom:1px solid #ccc8b4;background:transparent;padding:.5rem 0;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text);text-align:center;outline:none;transition:border-color .3s;margin-bottom:1.6rem}
+input[type=text]::placeholder,input[type=number]::placeholder{color:#c0baa8;font-style:italic}
+input[type=text]:focus,input[type=number]:focus{border-bottom-color:var(--blue)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 .bgroup{display:flex;gap:.75rem;justify-content:center;margin-bottom:2rem}
-.btn{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:.8rem 1.8rem;border:1px solid #cfc6b4;background:transparent;color:var(--text-light);cursor:pointer;transition:all .25s;border-radius:1px}
-.btn:hover{border-color:var(--sage);color:var(--sage);background:#f0ede5}
-.btn.sy{background:var(--sage);color:white;border-color:var(--sage)}
-.btn.sn{background:#a09080;color:white;border-color:#a09080}
-.sbtn{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.25em;text-transform:uppercase;padding:.9rem 2.8rem;background:var(--gold);color:white;border:none;border-radius:1px;cursor:pointer;transition:opacity .3s,transform .3s,background .2s;opacity:0;pointer-events:none;transform:translateY(5px)}
+.btn{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:.8rem 1.8rem;border:1px solid #ccc8b4;background:transparent;color:var(--text-light);cursor:pointer;transition:all .25s;border-radius:1px}
+.btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+.btn.sy{background:var(--blue);color:white;border-color:var(--blue)}
+.btn.sn{background:#a09a88;color:white;border-color:#a09a88}
+.sbtn{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.25em;text-transform:uppercase;padding:.9rem 2.8rem;background:var(--blue-dark);color:white;border:none;border-radius:1px;cursor:pointer;transition:opacity .3s,transform .3s,background .2s;opacity:0;pointer-events:none;transform:translateY(5px)}
 .sbtn.vis{opacity:1;pointer-events:all;transform:translateY(0)}
-.sbtn:hover{background:var(--gold-dark)}
+.sbtn:hover{background:var(--blue)}
 
 /* ty */
 .ty{display:none;text-align:center;padding:0 2.5rem;position:relative;z-index:1}
 .ty.show{display:block;animation:up .6s ease}
-.ty-title{font-family:'Great Vibes',cursive;font-size:3rem;color:var(--sage-dark);margin-bottom:.7rem}
+.ty-title{font-family:'Great Vibes',cursive;font-size:3rem;color:var(--blue-dark);margin-bottom:.7rem}
 .ty-msg{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-light);line-height:1.9;font-style:italic}
 </style>
 </head>
 <body>
 <div class="card">
 
-<!-- Top-left floral corner -->
-<svg class="corner corner-tl" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
-  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
-  <path d="M15 170 Q55 130 88 100" stroke="#a0b090" stroke-width="1" fill="none" opacity=".5"/>
-  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
-  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
-  <ellipse cx="22" cy="128" rx="9" ry="4" fill="#b0c0a0" opacity=".45" transform="rotate(-18 22 128)"/>
-  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
-  <!-- Big peony -->
-  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="96" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 96 52)"/>
-  <ellipse cx="118" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 118 52)"/>
-  <ellipse cx="96" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 96 74)"/>
-  <ellipse cx="118" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 118 74)"/>
-  <circle cx="107" cy="63" r="13" fill="#ede5d8" opacity=".7"/>
-  <circle cx="107" cy="63" r="9" fill="#e5dccb"/>
-  <circle cx="107" cy="63" r="5" fill="#d8c9a8"/>
-  <circle cx="107" cy="63" r="2.5" fill="#c9b488"/>
-  <!-- Small peony -->
-  <circle cx="58" cy="82" r="10" fill="#f0ebe0" opacity=".88"/>
-  <circle cx="58" cy="82" r="7" fill="#e8dece"/>
-  <circle cx="58" cy="82" r="4" fill="#d8c9a8"/>
-  <circle cx="58" cy="82" r="2" fill="#c9b488"/>
-  <ellipse cx="58" cy="73" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
-  <ellipse cx="58" cy="91" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
-  <ellipse cx="49" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
-  <ellipse cx="67" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
-  <!-- Daisy -->
-  <circle cx="28" cy="138" r="3.5" fill="#e8c860" opacity=".85"/>
-  <ellipse cx="28" cy="129" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
-  <ellipse cx="28" cy="147" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
-  <ellipse cx="19" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
-  <ellipse cx="37" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
-  <ellipse cx="21" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 21 131)"/>
-  <ellipse cx="35" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 35 131)"/>
-  <ellipse cx="21" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 21 145)"/>
-  <ellipse cx="35" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 35 145)"/>
+<!-- TOP-LEFT corner: blue roses + yellow flowers + leaves -->
+<svg class="corner corner-tl" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- branches/stems -->
+  <path d="M0 170 Q55 100 115 60" stroke="#6b8c5e" stroke-width="1.4" fill="none"/>
+  <path d="M0 130 Q38 90 72 72" stroke="#6b8c5e" stroke-width="1" fill="none" opacity=".6"/>
+  <path d="M18 190 Q60 145 95 110" stroke="#8aaa78" stroke-width="1" fill="none" opacity=".5"/>
+  <path d="M55 100 Q45 82 55 70" stroke="#6b8c5e" stroke-width=".9" fill="none"/>
+  <path d="M80 80 Q72 65 80 53" stroke="#6b8c5e" stroke-width=".9" fill="none"/>
+  <!-- leaves -->
+  <ellipse cx="38" cy="118" rx="12" ry="5.5" fill="#7aaa6a" opacity=".55" transform="rotate(-30 38 118)"/>
+  <ellipse cx="60" cy="96" rx="11" ry="5" fill="#6b8c5e" opacity=".5" transform="rotate(-50 60 96)"/>
+  <ellipse cx="22" cy="142" rx="10" ry="4.5" fill="#9aba88" opacity=".45" transform="rotate(-18 22 142)"/>
+  <ellipse cx="85" cy="72" rx="10" ry="4.5" fill="#7aaa6a" opacity=".5" transform="rotate(-62 85 72)"/>
+  <ellipse cx="50" cy="70" rx="9" ry="4" fill="#6b8c5e" opacity=".45" transform="rotate(-40 50 70)"/>
+  <ellipse cx="72" cy="55" rx="8" ry="3.5" fill="#9aba88" opacity=".45" transform="rotate(-55 72 55)"/>
+  <!-- Big blue rose -->
+  <circle cx="118" cy="58" r="15" fill="#a8cce0" opacity=".5"/>
+  <circle cx="118" cy="58" r="12" fill="#8abcd4" opacity=".7"/>
+  <circle cx="118" cy="58" r="9" fill="#6aaac8"/>
+  <circle cx="118" cy="58" r="6" fill="#5090b8"/>
+  <circle cx="118" cy="58" r="3" fill="#3a78a8"/>
+  <ellipse cx="118" cy="44" rx="5.5" ry="8" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="118" cy="72" rx="5.5" ry="8" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="104" cy="58" rx="8" ry="5.5" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="132" cy="58" rx="8" ry="5.5" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="107" cy="47" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(-45 107 47)"/>
+  <ellipse cx="129" cy="47" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(45 129 47)"/>
+  <ellipse cx="107" cy="69" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(45 107 69)"/>
+  <ellipse cx="129" cy="69" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(-45 129 69)"/>
+  <!-- Yellow flower big -->
+  <circle cx="60" cy="90" r="11" fill="#f5e090" opacity=".9"/>
+  <circle cx="60" cy="90" r="7" fill="#f0d060"/>
+  <circle cx="60" cy="90" r="3.5" fill="#c89820"/>
+  <ellipse cx="60" cy="80" rx="4" ry="6.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="60" cy="100" rx="4" ry="6.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="50" cy="90" rx="6.5" ry="4" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="70" cy="90" rx="6.5" ry="4" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="53" cy="83" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(-45 53 83)"/>
+  <ellipse cx="67" cy="83" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(45 67 83)"/>
+  <ellipse cx="53" cy="97" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(45 53 97)"/>
+  <ellipse cx="67" cy="97" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(-45 67 97)"/>
+  <!-- Small blue rose -->
+  <circle cx="80" cy="55" r="9" fill="#a8cce0" opacity=".5"/>
+  <circle cx="80" cy="55" r="7" fill="#8abcd4" opacity=".7"/>
+  <circle cx="80" cy="55" r="5" fill="#6aaac8"/>
+  <circle cx="80" cy="55" r="2.5" fill="#3a78a8"/>
+  <ellipse cx="80" cy="47" rx="3.5" ry="5.5" fill="#b0d4e8" opacity=".7"/>
+  <ellipse cx="80" cy="63" rx="3.5" ry="5.5" fill="#b0d4e8" opacity=".7"/>
+  <ellipse cx="72" cy="55" rx="5.5" ry="3.5" fill="#b0d4e8" opacity=".7"/>
+  <ellipse cx="88" cy="55" rx="5.5" ry="3.5" fill="#b0d4e8" opacity=".7"/>
+  <!-- Small yellow flower -->
+  <circle cx="30" cy="148" r="7" fill="#f5e090" opacity=".9"/>
+  <circle cx="30" cy="148" r="4" fill="#e8c840"/>
+  <circle cx="30" cy="148" r="2" fill="#c89820"/>
+  <ellipse cx="30" cy="141" rx="3" ry="4.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="30" cy="155" rx="3" ry="4.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="23" cy="148" rx="4.5" ry="3" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="37" cy="148" rx="4.5" ry="3" fill="#faf0b0" opacity=".85"/>
+  <!-- tiny buds -->
+  <circle cx="95" cy="108" r="4" fill="#8abcd4" opacity=".6"/>
+  <circle cx="95" cy="108" r="2" fill="#5090b8" opacity=".7"/>
+  <circle cx="42" cy="160" r="3.5" fill="#f0d060" opacity=".7"/>
+  <circle cx="42" cy="160" r="1.5" fill="#c89820"/>
 </svg>
 
-<svg class="corner corner-tr" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
-  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
-  <path d="M15 170 Q55 130 88 100" stroke="#a0b090" stroke-width="1" fill="none" opacity=".5"/>
-  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
-  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
-  <ellipse cx="22" cy="128" rx="9" ry="4" fill="#b0c0a0" opacity=".45" transform="rotate(-18 22 128)"/>
-  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
-  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="96" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 96 52)"/>
-  <ellipse cx="118" cy="52" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 118 52)"/>
-  <ellipse cx="96" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(45 96 74)"/>
-  <ellipse cx="118" cy="74" rx="7" ry="9" fill="#ede5d4" opacity=".75" transform="rotate(-45 118 74)"/>
-  <circle cx="107" cy="63" r="13" fill="#ede5d8" opacity=".7"/>
-  <circle cx="107" cy="63" r="9" fill="#e5dccb"/>
-  <circle cx="107" cy="63" r="5" fill="#d8c9a8"/>
-  <circle cx="107" cy="63" r="2.5" fill="#c9b488"/>
-  <circle cx="58" cy="82" r="10" fill="#f0ebe0" opacity=".88"/>
-  <circle cx="58" cy="82" r="7" fill="#e8dece"/>
-  <circle cx="58" cy="82" r="4" fill="#d8c9a8"/>
-  <circle cx="58" cy="82" r="2" fill="#c9b488"/>
-  <ellipse cx="58" cy="73" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
-  <ellipse cx="58" cy="91" rx="4" ry="6" fill="#f5f0e6" opacity=".8"/>
-  <ellipse cx="49" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
-  <ellipse cx="67" cy="82" rx="6" ry="4" fill="#f5f0e6" opacity=".8"/>
-  <circle cx="28" cy="138" r="3.5" fill="#e8c860" opacity=".85"/>
-  <ellipse cx="28" cy="129" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
-  <ellipse cx="28" cy="147" rx="2.5" ry="4.5" fill="white" opacity=".92"/>
-  <ellipse cx="19" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
-  <ellipse cx="37" cy="138" rx="4.5" ry="2.5" fill="white" opacity=".92"/>
-  <ellipse cx="21" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 21 131)"/>
-  <ellipse cx="35" cy="131" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 35 131)"/>
-  <ellipse cx="21" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(45 21 145)"/>
-  <ellipse cx="35" cy="145" rx="3" ry="2" fill="white" opacity=".85" transform="rotate(-45 35 145)"/>
+<svg class="corner corner-tr" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 170 Q55 100 115 60" stroke="#6b8c5e" stroke-width="1.4" fill="none"/>
+  <path d="M0 130 Q38 90 72 72" stroke="#6b8c5e" stroke-width="1" fill="none" opacity=".6"/>
+  <path d="M18 190 Q60 145 95 110" stroke="#8aaa78" stroke-width="1" fill="none" opacity=".5"/>
+  <ellipse cx="38" cy="118" rx="12" ry="5.5" fill="#7aaa6a" opacity=".55" transform="rotate(-30 38 118)"/>
+  <ellipse cx="60" cy="96" rx="11" ry="5" fill="#6b8c5e" opacity=".5" transform="rotate(-50 60 96)"/>
+  <ellipse cx="22" cy="142" rx="10" ry="4.5" fill="#9aba88" opacity=".45" transform="rotate(-18 22 142)"/>
+  <ellipse cx="85" cy="72" rx="10" ry="4.5" fill="#7aaa6a" opacity=".5" transform="rotate(-62 85 72)"/>
+  <ellipse cx="50" cy="70" rx="9" ry="4" fill="#6b8c5e" opacity=".45" transform="rotate(-40 50 70)"/>
+  <ellipse cx="72" cy="55" rx="8" ry="3.5" fill="#9aba88" opacity=".45" transform="rotate(-55 72 55)"/>
+  <circle cx="118" cy="58" r="15" fill="#a8cce0" opacity=".5"/>
+  <circle cx="118" cy="58" r="12" fill="#8abcd4" opacity=".7"/>
+  <circle cx="118" cy="58" r="9" fill="#6aaac8"/>
+  <circle cx="118" cy="58" r="6" fill="#5090b8"/>
+  <circle cx="118" cy="58" r="3" fill="#3a78a8"/>
+  <ellipse cx="118" cy="44" rx="5.5" ry="8" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="118" cy="72" rx="5.5" ry="8" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="104" cy="58" rx="8" ry="5.5" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="132" cy="58" rx="8" ry="5.5" fill="#a8cce0" opacity=".75"/>
+  <ellipse cx="107" cy="47" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(-45 107 47)"/>
+  <ellipse cx="129" cy="47" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(45 129 47)"/>
+  <ellipse cx="107" cy="69" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(45 107 69)"/>
+  <ellipse cx="129" cy="69" rx="5" ry="7.5" fill="#90b8d0" opacity=".65" transform="rotate(-45 129 69)"/>
+  <circle cx="60" cy="90" r="11" fill="#f5e090" opacity=".9"/>
+  <circle cx="60" cy="90" r="7" fill="#f0d060"/>
+  <circle cx="60" cy="90" r="3.5" fill="#c89820"/>
+  <ellipse cx="60" cy="80" rx="4" ry="6.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="60" cy="100" rx="4" ry="6.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="50" cy="90" rx="6.5" ry="4" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="70" cy="90" rx="6.5" ry="4" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="53" cy="83" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(-45 53 83)"/>
+  <ellipse cx="67" cy="83" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(45 67 83)"/>
+  <ellipse cx="53" cy="97" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(45 53 97)"/>
+  <ellipse cx="67" cy="97" rx="4" ry="6" fill="#f5e888" opacity=".75" transform="rotate(-45 67 97)"/>
+  <circle cx="80" cy="55" r="9" fill="#a8cce0" opacity=".5"/>
+  <circle cx="80" cy="55" r="7" fill="#8abcd4" opacity=".7"/>
+  <circle cx="80" cy="55" r="5" fill="#6aaac8"/>
+  <circle cx="80" cy="55" r="2.5" fill="#3a78a8"/>
+  <ellipse cx="80" cy="47" rx="3.5" ry="5.5" fill="#b0d4e8" opacity=".7"/>
+  <ellipse cx="80" cy="63" rx="3.5" ry="5.5" fill="#b0d4e8" opacity=".7"/>
+  <ellipse cx="72" cy="55" rx="5.5" ry="3.5" fill="#b0d4e8" opacity=".7"/>
+  <ellipse cx="88" cy="55" rx="5.5" ry="3.5" fill="#b0d4e8" opacity=".7"/>
+  <circle cx="30" cy="148" r="7" fill="#f5e090" opacity=".9"/>
+  <circle cx="30" cy="148" r="4" fill="#e8c840"/>
+  <circle cx="30" cy="148" r="2" fill="#c89820"/>
+  <ellipse cx="30" cy="141" rx="3" ry="4.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="30" cy="155" rx="3" ry="4.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="23" cy="148" rx="4.5" ry="3" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="37" cy="148" rx="4.5" ry="3" fill="#faf0b0" opacity=".85"/>
+  <circle cx="95" cy="108" r="4" fill="#8abcd4" opacity=".6"/>
+  <circle cx="95" cy="108" r="2" fill="#5090b8" opacity=".7"/>
+  <circle cx="42" cy="160" r="3.5" fill="#f0d060" opacity=".7"/>
+  <circle cx="42" cy="160" r="1.5" fill="#c89820"/>
 </svg>
 
-<svg class="corner corner-bl" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
-  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
-  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
-  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
-  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
-  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <circle cx="107" cy="63" r="12" fill="#ede5d8" opacity=".7"/>
-  <circle cx="107" cy="63" r="8" fill="#e5dccb"/>
-  <circle cx="107" cy="63" r="4.5" fill="#d8c9a8"/>
-  <circle cx="107" cy="63" r="2" fill="#c9b488"/>
-  <circle cx="55" cy="80" r="8" fill="#f0ebe0" opacity=".85"/>
-  <circle cx="55" cy="80" r="5" fill="#e8dece"/>
-  <circle cx="55" cy="80" r="2.5" fill="#d4c090"/>
-  <ellipse cx="55" cy="72" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
-  <ellipse cx="55" cy="88" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
-  <ellipse cx="47" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
-  <ellipse cx="63" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
+<svg class="corner corner-bl" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 170 Q55 100 115 60" stroke="#6b8c5e" stroke-width="1.4" fill="none"/>
+  <path d="M0 130 Q38 90 72 72" stroke="#6b8c5e" stroke-width="1" fill="none" opacity=".6"/>
+  <ellipse cx="38" cy="118" rx="12" ry="5.5" fill="#7aaa6a" opacity=".55" transform="rotate(-30 38 118)"/>
+  <ellipse cx="60" cy="96" rx="11" ry="5" fill="#6b8c5e" opacity=".5" transform="rotate(-50 60 96)"/>
+  <ellipse cx="85" cy="72" rx="10" ry="4.5" fill="#7aaa6a" opacity=".5" transform="rotate(-62 85 72)"/>
+  <circle cx="118" cy="58" r="13" fill="#a8cce0" opacity=".5"/>
+  <circle cx="118" cy="58" r="10" fill="#8abcd4" opacity=".7"/>
+  <circle cx="118" cy="58" r="7" fill="#6aaac8"/>
+  <circle cx="118" cy="58" r="4" fill="#5090b8"/>
+  <circle cx="118" cy="58" r="2" fill="#3a78a8"/>
+  <ellipse cx="118" cy="46" rx="5" ry="7" fill="#a8cce0" opacity=".7"/>
+  <ellipse cx="118" cy="70" rx="5" ry="7" fill="#a8cce0" opacity=".7"/>
+  <ellipse cx="106" cy="58" rx="7" ry="5" fill="#a8cce0" opacity=".7"/>
+  <ellipse cx="130" cy="58" rx="7" ry="5" fill="#a8cce0" opacity=".7"/>
+  <circle cx="58" cy="88" r="9" fill="#f5e090" opacity=".9"/>
+  <circle cx="58" cy="88" r="5.5" fill="#f0d060"/>
+  <circle cx="58" cy="88" r="2.5" fill="#c89820"/>
+  <ellipse cx="58" cy="80" rx="3.5" ry="5.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="58" cy="96" rx="3.5" ry="5.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="50" cy="88" rx="5.5" ry="3.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="66" cy="88" rx="5.5" ry="3.5" fill="#faf0b0" opacity=".85"/>
 </svg>
 
-<svg class="corner corner-br" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 150 Q50 90 105 55" stroke="#8a9e80" stroke-width="1.3" fill="none"/>
-  <path d="M0 115 Q35 80 68 65" stroke="#8a9e80" stroke-width="1" fill="none" opacity=".65"/>
-  <ellipse cx="38" cy="105" rx="11" ry="5" fill="#9aaa8a" opacity=".55" transform="rotate(-28 38 105)"/>
-  <ellipse cx="58" cy="85" rx="10" ry="4.5" fill="#7a8c72" opacity=".5" transform="rotate(-48 58 85)"/>
-  <ellipse cx="78" cy="65" rx="9" ry="4" fill="#9aaa8a" opacity=".5" transform="rotate(-58 78 65)"/>
-  <ellipse cx="107" cy="53" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="107" cy="73" rx="7" ry="10" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="93" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <ellipse cx="121" cy="63" rx="10" ry="7" fill="#f4efe4" opacity=".85"/>
-  <circle cx="107" cy="63" r="12" fill="#ede5d8" opacity=".7"/>
-  <circle cx="107" cy="63" r="8" fill="#e5dccb"/>
-  <circle cx="107" cy="63" r="4.5" fill="#d8c9a8"/>
-  <circle cx="107" cy="63" r="2" fill="#c9b488"/>
-  <circle cx="55" cy="80" r="8" fill="#f0ebe0" opacity=".85"/>
-  <circle cx="55" cy="80" r="5" fill="#e8dece"/>
-  <circle cx="55" cy="80" r="2.5" fill="#d4c090"/>
-  <ellipse cx="55" cy="72" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
-  <ellipse cx="55" cy="88" rx="3" ry="5" fill="#f5f0e8" opacity=".8"/>
-  <ellipse cx="47" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
-  <ellipse cx="63" cy="80" rx="5" ry="3" fill="#f5f0e8" opacity=".8"/>
+<svg class="corner corner-br" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 170 Q55 100 115 60" stroke="#6b8c5e" stroke-width="1.4" fill="none"/>
+  <path d="M0 130 Q38 90 72 72" stroke="#6b8c5e" stroke-width="1" fill="none" opacity=".6"/>
+  <ellipse cx="38" cy="118" rx="12" ry="5.5" fill="#7aaa6a" opacity=".55" transform="rotate(-30 38 118)"/>
+  <ellipse cx="60" cy="96" rx="11" ry="5" fill="#6b8c5e" opacity=".5" transform="rotate(-50 60 96)"/>
+  <ellipse cx="85" cy="72" rx="10" ry="4.5" fill="#7aaa6a" opacity=".5" transform="rotate(-62 85 72)"/>
+  <circle cx="118" cy="58" r="13" fill="#a8cce0" opacity=".5"/>
+  <circle cx="118" cy="58" r="10" fill="#8abcd4" opacity=".7"/>
+  <circle cx="118" cy="58" r="7" fill="#6aaac8"/>
+  <circle cx="118" cy="58" r="4" fill="#5090b8"/>
+  <circle cx="118" cy="58" r="2" fill="#3a78a8"/>
+  <ellipse cx="118" cy="46" rx="5" ry="7" fill="#a8cce0" opacity=".7"/>
+  <ellipse cx="118" cy="70" rx="5" ry="7" fill="#a8cce0" opacity=".7"/>
+  <ellipse cx="106" cy="58" rx="7" ry="5" fill="#a8cce0" opacity=".7"/>
+  <ellipse cx="130" cy="58" rx="7" ry="5" fill="#a8cce0" opacity=".7"/>
+  <circle cx="58" cy="88" r="9" fill="#f5e090" opacity=".9"/>
+  <circle cx="58" cy="88" r="5.5" fill="#f0d060"/>
+  <circle cx="58" cy="88" r="2.5" fill="#c89820"/>
+  <ellipse cx="58" cy="80" rx="3.5" ry="5.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="58" cy="96" rx="3.5" ry="5.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="50" cy="88" rx="5.5" ry="3.5" fill="#faf0b0" opacity=".85"/>
+  <ellipse cx="66" cy="88" rx="5.5" ry="3.5" fill="#faf0b0" opacity=".85"/>
 </svg>
 
 <!-- Header -->
 <div class="header">
   <p class="save-label">Confirmação de presença</p>
   <div class="names">
-    Naíne<span class="amp">&</span>Wallace
+    Naíne <span class="amp">&</span> Wallace
   </div>
   <p class="tagline">Nós vamos casar!</p>
   <div class="date-row">
-    <span>11.03.2027</span>
+    <span>11 de Março de 2027</span>
     <span class="gem">◆</span>
     <span>Rio de Janeiro</span>
   </div>
@@ -209,9 +258,11 @@ input[type=text]:focus{border-bottom-color:var(--gold)}
 <!-- Divider -->
 <div class="div-wrap">
   <div class="div-line"></div>
-  <svg class="div-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M8 1 Q13 5 13 10 Q13 15 8 15 Q3 15 3 10 Q3 5 8 1Z" fill="#9aaa8a" opacity=".65"/>
-    <path d="M8 1 Q8 8 8 15" stroke="#7a8c72" stroke-width=".8" fill="none"/>
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+    <path d="M9 1 Q14 5 14 10 Q14 15 9 17 Q4 15 4 10 Q4 5 9 1Z" fill="#7bafd4" opacity=".6"/>
+    <path d="M9 1 Q9 9 9 17" stroke="#5090b8" stroke-width=".8" fill="none"/>
+    <ellipse cx="5.5" cy="9" rx="3" ry="1.5" fill="#6b8c5e" opacity=".5" transform="rotate(-30 5.5 9)"/>
+    <ellipse cx="12.5" cy="9" rx="3" ry="1.5" fill="#6b8c5e" opacity=".5" transform="rotate(30 12.5 9)"/>
   </svg>
   <div class="div-line"></div>
 </div>
@@ -221,6 +272,10 @@ input[type=text]:focus{border-bottom-color:var(--gold)}
   <p class="fq">Como podemos chamar você?</p>
   <label class="flabel" for="guestName">Seu nome completo</label>
   <input type="text" id="guestName" placeholder="Digite seu nome" autocomplete="off" oninput="checkForm()">
+
+  <p class="fq">Quantos anos você tem?</p>
+  <label class="flabel" for="guestAge">Idade</label>
+  <input type="number" id="guestAge" placeholder="Ex: 32" min="1" max="120" oninput="checkForm()">
 
   <p class="fq">Você poderá estar presente?</p>
   <div class="bgroup">
@@ -233,15 +288,16 @@ input[type=text]:focus{border-bottom-color:var(--gold)}
 <!-- Thank you -->
 <div class="ty" id="ty">
   <div style="margin-bottom:1rem">
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-      <ellipse cx="26" cy="16" rx="6" ry="9" fill="#f4efe4" opacity=".85"/>
-      <ellipse cx="26" cy="36" rx="6" ry="9" fill="#f4efe4" opacity=".85"/>
-      <ellipse cx="16" cy="26" rx="9" ry="6" fill="#f4efe4" opacity=".85"/>
-      <ellipse cx="36" cy="26" rx="9" ry="6" fill="#f4efe4" opacity=".85"/>
-      <circle cx="26" cy="26" r="11" fill="#ede5d8" opacity=".75"/>
-      <circle cx="26" cy="26" r="7" fill="#e5dccb"/>
-      <circle cx="26" cy="26" r="4" fill="#d8c9a8"/>
-      <path d="M17 27 L23 33 L35 20" stroke="#7a8c72" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="16" fill="#a8cce0" opacity=".4"/>
+      <circle cx="28" cy="28" r="12" fill="#8abcd4" opacity=".6"/>
+      <circle cx="28" cy="28" r="8" fill="#6aaac8"/>
+      <circle cx="28" cy="28" r="4" fill="#5090b8"/>
+      <ellipse cx="28" cy="14" rx="4" ry="6" fill="#b0d4e8" opacity=".75"/>
+      <ellipse cx="28" cy="42" rx="4" ry="6" fill="#b0d4e8" opacity=".75"/>
+      <ellipse cx="14" cy="28" rx="6" ry="4" fill="#b0d4e8" opacity=".75"/>
+      <ellipse cx="42" cy="28" rx="6" ry="4" fill="#b0d4e8" opacity=".75"/>
+      <path d="M18 29 L24 35 L38 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
   <p class="ty-title" id="tyTitle"></p>
@@ -259,18 +315,20 @@ function sel(v){
   checkForm();
 }
 function checkForm(){
-  const ok=document.getElementById('guestName').value.trim()&&ans;
-  document.getElementById('submitBtn').classList.toggle('vis',!!ok);
+  const name=document.getElementById('guestName').value.trim();
+  const age=document.getElementById('guestAge').value.trim();
+  document.getElementById('submitBtn').classList.toggle('vis',!!(name&&age&&ans));
 }
 async function go(){
   const name=document.getElementById('guestName').value.trim();
+  const age=document.getElementById('guestAge').value.trim();
   const btn=document.getElementById('submitBtn');
   btn.textContent='Enviando…';btn.style.opacity='.6';btn.style.pointerEvents='none';
   try{
     const r=await fetch('https://formspree.io/f/mojywzba',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({nome:name,presenca:ans==='yes'?'Confirmado ✓':'Não poderá ir'})
+      body:JSON.stringify({nome:name,idade:age,presenca:ans==='yes'?'Confirmado ✓':'Não poderá ir'})
     });
     if(!r.ok)throw 0;
   }catch{
